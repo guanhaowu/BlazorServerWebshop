@@ -1,0 +1,21 @@
+{
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.14"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.14"
+  },
+  "scripts": {
+    "restore": "dotnet restore",
+    "build": "dotnet clean && dotnet build --configuration Debug",
+    "build:prod": "npm run tailwind:build && dotnet publish --configuration Release --output publish --self-contained false --no-restore -p:PublishTrimmed=true -p:EnableCompressionInSingleFile=true",
+    "tailwind:watch": "npx tailwindcss -i ./wwwroot/app.css -o ./wwwroot/css/tailwind.css --watch",
+    "tailwind:build": "npx tailwindcss -i ./wwwroot/app.css -o ./wwwroot/css/tailwind.css --minify",
+    "dev": "dotnet watch --no-hot-reload --no-restore",
+    "start": "concurrently \"npm run tailwind:watch\" \"dotnet watch --no-hot-reload --no-restore\"",
+    "test": "dotnet test",
+    "format": "dotnet format --verify-no-changes"
+  }
+}
