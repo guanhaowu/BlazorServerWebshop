@@ -1,6 +1,6 @@
 ﻿@page "/"
 
-<PageTitle>@title</PageTitle>
+<PageTitle>@Title</PageTitle>
 
 <h1 class="text-3xl font-bold underline">
     Hello, world!
@@ -10,5 +10,5 @@ Welcome to your new app.
 
 
 @code {
-    public string title { get; set; }= "Home";
+    private string Title { get; set; } = Resources.Home.Home_Title;
 }

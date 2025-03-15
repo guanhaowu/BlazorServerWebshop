@@ -7,6 +7,19 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.3" />
     </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\Home.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>Home.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Resources\Home.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>Home.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
     
     <Target Name="Prebuild" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)' == 'Release'">
         <Exec Command="npx @tailwindcss/cli -i ./wwwroot/app.css -o ./wwwroot/css/tailwind.css --minify" />
